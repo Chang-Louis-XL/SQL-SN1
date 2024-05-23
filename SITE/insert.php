@@ -1,3 +1,8 @@
+<?php
+$dsn = "mysql:host=localhost;charset=utf8;dbname=school";
+$pdo = new PDO($dsn, 'root', '');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +21,9 @@
 
         <div>
             <label for="school_num">學號:</label>
+            <?php
+            $max=$pdo ->query("select max")
+            ?>
             <input type="number" min='1' name="school_num" id="school_num">
         </div>
         <div>
@@ -55,7 +63,14 @@
         </div>
         <div>
             <label for="graduate_at">畢業學校:</label>
-            <input type="text" name="graduate_at" id="graduate_at">
+            <select name="graduate_at" id="graduate_at">
+                <?php
+                $schools = $pdo->query('select * from graduate_school')->fetchAll();
+                foreach ($schools as $school) {
+                    echo "<option value='{$school['id']}'>{$school['county']}{$school['name']}</option>";
+                }
+                ?>
+            </select>
         </div>
         <div>
             <label for="status_code">畢業狀態:</label>
