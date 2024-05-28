@@ -28,7 +28,10 @@ $pdo = new PDO($dsn, 'root', '');
         <div>
             <label for="school_num">學號：</label>
             <?php
+            // ::FETCH_ASSOC 是 PHP 中 PDO (PHP Data Objects) 常量 PDO::FETCH_ASSOC 的簡寫表示方法。這個常量用於指定從數據庫查詢結果中提取的數據應該以關聯數組（associative array）的形式返回。
+            // 具體來說，當你使用 PDOStatement 對象的 fetch 或 fetchAll 方法時，你可以使用 PDO::FETCH_ASSOC 來指定返回的數據格式。
             $max = $pdo->query("select max(`school_num`) as 'max' from `students`")->fetch(PDO::FETCH_ASSOC);
+            // $max['max'] 的作用是從 $max 這個關聯數組中取出名為 'max' 的鍵所對應的值。
             echo $max['max'] + 1;
             ?>
             <input type="hidden" min='1' name="school_num" id="school_num" value='<?= $max['max'] + 1; ?>'>
