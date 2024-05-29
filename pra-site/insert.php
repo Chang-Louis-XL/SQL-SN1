@@ -21,10 +21,12 @@ id 屬性：這個屬性用於給 HTML 元素指定一個唯一的識別符。�
 <body>
     <h1>新增學員</h1>
     <?php
-    if (isset($_GET['error']))
+   if (isset($_GET['error'])) {
     echo "<span style='color:red'>";
     echo $_GET['error'];
     echo "</span>";
+}
+
     ?>
     <form action="save.php" method="post">
         <div>
