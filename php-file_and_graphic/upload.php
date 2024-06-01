@@ -25,7 +25,7 @@ if (!empty($_FILES)) {
 // }
 
     if (move_uploaded_file($_FILES['file']['tmp_name'], "images/" . $_FILES['file']['name'])) {
-        // $_SESSION['file'][]此為使用者上傳的格式，要等於系統裡面的陣列格式。
+        // $_SESSION['file'][]後括弧此為使用者上傳的格式，要等於系統裡面的陣列格式。
         // $_SESSION['file'][] = $_FILES['file']['name'];
 
         $data['name'] = $_FILES['file']['name'];

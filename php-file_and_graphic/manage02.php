@@ -44,11 +44,6 @@ if (!empty($_FILES) && $_FILES['file']['error'] == 0) {
             width: 150px;
 
         }
-
-        .icon {
-            width: 100px;
-            height: 100px;
-        }
     </style>
 </head>
 
@@ -76,43 +71,33 @@ if (!empty($_FILES) && $_FILES['file']['error'] == 0) {
         <?php
         $rows = all('manage');
         foreach ($rows as $row) {
-            ?>
-        <tr>
-            <td>
-                <?= $row['id']; ?>
-            </td>
-            <td>
-                <a href="./materials/<?= $row['name']; ?>" download>
-                    <?php
-                    switch ($row['type']) {
-                        case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-                            echo "<img src='./word.webp' class='icon'>";
-                            break;
-                        case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
-                            echo "<img src='./excel.webp' class='icon'>";
-                            break;
-                        default:
-                            echo "<img src='./materials/{$row['name']}' class='imgs'>";
-                    }
-                    ?>
-                </a>
-            </td>
-            <td>
-                <?= $row['name']; ?>
-            </td>
-            <td>
-                <?= $row['type']; ?>
-            </td>
-            <td>
-                <?= $row['size']; ?>
-            </td>
-            <td>
-                <?= $row['description']; ?>
-            </td>
-            <td>
-                <a href="#">編輯</a><a href="#">刪除</a>
-            </td>
-        </tr>
+        ?>
+            <tr>
+                <td><?= $row['id']; ?></td>
+                <td>
+                    <a href="./materials/<?= $row['name']; ?>" download>
+                        <?php
+                        switch ($row['type']) {
+                            case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                                echo "<img src='./word.webp' class='icon'>";
+                                break;
+                            case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+                                echo "<img src='./excel.webp' class='icon'>";
+                                break;
+                            default:
+                                echo "<img src='./materials/{$row['name']}' class='imgs'>";
+                        }
+                        ?>
+                    </a>
+                </td>
+                <td><?= $row['name']; ?></td>
+                <td><?= $row['type']; ?></td>
+                <td><?= $row['size']; ?></td>
+                <td><?= $row['description']; ?></td>
+                <td>
+                    <a href="#">編輯</a><a href="#">刪除</a>
+                </td>
+            </tr>
         <?php
         }
         ?>
