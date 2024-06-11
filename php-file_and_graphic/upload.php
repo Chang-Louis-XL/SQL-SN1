@@ -16,18 +16,12 @@ if (!empty($_FILES)) {
     // echo "檔案大小" . $_FILES['file']['size'] . "<br>";
     // echo "站存名稱" . $_FILES['file']['tmp_name'] . "<br>";
     
+
+
     // move_uploaded_file檔案搬移，確認檔案資訊是否正確，若正確搬移至images/。
-    // if(move_uploaded_file($_FILES['file']['tmp_name'],"images/" .$_FILES['file']['name'])){
-//     echo "檔案上傳成功";
-// } else {
-//     echo "檔案上傳失敗";
-// }
-// }
 
     if (move_uploaded_file($_FILES['file']['tmp_name'], "images/" . $_FILES['file']['name'])) {
-        // $_SESSION['file'][]後括弧此為使用者上傳的至系統的內容，要等於系統裡面的陣列的內容。
-        // $_SESSION['file'][] = $_FILES['file']['name'];
-
+    
         $data['name'] = $_FILES['file']['name'];
         $data['type'] = $_FILES['file']['type'];
         $data['size'] = $_FILES['file']['size'];
@@ -64,25 +58,6 @@ if (!empty($_FILES)) {
     <!----建立一個連結來查看上傳後的圖檔---->
     <?php
 
-    //        if (!empty($_FILES)) {
-//        echo "<img src='images/{$_FILES['file']['name']}'>";
-//    }
-    
-
-    // if (isset($_SESSION['file'])) {
-    //     // 把seesion檔案傳至file變數，以利達到可以傳入多個，與宣告出來
-    //     foreach ($_SESSION['file'] as $file) {
-    //         echo "<img src='images/{$file}' class='upload-img'>";
-    //     }
-    // }
-    
-
-    // $files = scandir("images/");
-    // unset($files[0], $files[1]);
-    // foreach ($files as $file) {
-    //     echo "<img src='images/{$file}' class='upload-img'>";
-        
-    // }
     
     $images = all('images');
 
